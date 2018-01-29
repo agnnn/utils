@@ -2,7 +2,7 @@
 
 function print_usage() {
   cat <<EOF
-https://github.com/agnnn/azure-template
+https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-acr-spinnaker-k8s
 Command
   $0
 Arguments
