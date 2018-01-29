@@ -244,7 +244,7 @@ hal config provider kubernetes true
 
 # Deploy Spinnaker to the Kubernetes cluster
 hal config deploy edit --account-name $my_kubernetes_account --type distributed
-hal config features edit --pipeline-templates enable
+hal config features edit --pipeline-templates true
 hal deploy apply
 
 # Automatically connect to Spinnaker when logging in to DevOps VM
