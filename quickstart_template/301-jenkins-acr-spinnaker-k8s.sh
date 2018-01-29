@@ -112,7 +112,7 @@ EOF
 
 #Set defaults
 pipeline_port="8000"
-artifacts_location="https://raw.githubusercontent.com/Azure/azure-devops-utils/master/"
+artifacts_location="https://raw.githubusercontent.com/agnnn/utils/"
 docker_repository="${vm_user_name}/myfirstapp"
 
 while [[ $# > 0 ]]
@@ -246,7 +246,7 @@ hal config provider kubernetes enable
 
 # Deploy Spinnaker to the Kubernetes cluster
 hal config deploy edit --account-name $my_kubernetes_account --type distributed
-hal config features edit --pipeline-templates true
+hal config features edit --pipeline-templates enable
 hal deploy apply
 
 # Automatically connect to Spinnaker when logging in to DevOps VM
