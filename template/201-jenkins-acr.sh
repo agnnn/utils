@@ -1,7 +1,7 @@
 #!/bin/bash
 function print_usage() {
   cat <<EOF
-https://github.com/Azure/azure-quickstart-templates/tree/master/201-jenkins-acr
+https://github.com/agnnn/azure-template
 Command
   $0
 Arguments

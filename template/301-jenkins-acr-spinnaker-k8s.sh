@@ -53,9 +53,7 @@ function add_empty_image_to_acr() {
   fi
   sudo gpasswd -a $user_name docker
 
-  # Add (virtually) empty container to ACR to properly initialize Spinnaker. This fixes two bugs:
-  # 1. The pipeline isn't triggered on the first push to the ACR (according to the source code, Igor "avoids publishing an event if this account has no indexed images (protects against a flushed redis)")
-  # 2. Some dropdowns in the UI for the pipeline display a 'loading' symbol rather than the repository we configured
+
   temp_dir=$(mktemp -d)
   touch "$temp_dir/README"
   echo "This container is intentionally empty and only used as a placeholder." >"$temp_dir/README"
@@ -242,7 +240,7 @@ hal config provider kubernetes account add $my_kubernetes_account \
   --kubeconfig-file "$kubeconfig_path" \
   --context $(kubectl config current-context --kubeconfig "$kubeconfig_path") \
   --docker-registries "$docker_hub_account" "$acr_account"
-hal config provider kubernetes enable
+hal config provider kubernetes true
 
 # Deploy Spinnaker to the Kubernetes cluster
 hal config deploy edit --account-name $my_kubernetes_account --type distributed
@@ -261,7 +259,7 @@ run_util_script "spinnaker/add_k8s_pipeline/add_k8s_pipeline.sh" \
   -al "$artifacts_location" \
   -st "$artifacts_location_sas_token"
 
-run_util_script "quickstart_template/201-jenkins-acr.sh" -u "$user_name" \
+run_util_script "template/201-jenkins-acr.sh" -u "$user_name" \
   -g "$git_repository" \
   -r "https://$azure_container_registry" \
   -ru "$app_id" \
