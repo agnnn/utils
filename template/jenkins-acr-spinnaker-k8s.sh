@@ -259,7 +259,7 @@ run_util_script "spinnaker/add_k8s_pipeline/add_k8s_pipeline.sh" \
   -al "$artifacts_location" \
   -st "$artifacts_location_sas_token"
 
-run_util_script "template/201-jenkins-acr.sh" -u "$user_name" \
+run_util_script "template/jenkins-acr.sh" -u "$user_name" \
   -g "$git_repository" \
   -r "https://$azure_container_registry" \
   -ru "$app_id" \
